@@ -22,7 +22,7 @@ EthernetClient client;
 
 int    HTTP_PORT   = 80;
 String HTTP_METHOD = "GET";
-char   HOST_NAME[] = "192.168.1.34"; // change to your PC's IP address
+char   HOST_NAME[] = "192.168.0.111"; // change to your PC's IP address
 String PATH_NAME   = "/argon/data-api.php";
 String getData;
 
@@ -62,6 +62,7 @@ void setup() {
   //delay(3000);
   //START IP DHCP
   Serial.println("Konfigurasi DHCP, Silahkan Tunggu!");
+  digitalWrite(ledy,HIGH);
   if (Ethernet.begin(mac) == 0) {
     Serial.println("DHCP Gagal!");
     if (Ethernet.hardwareStatus() == EthernetNoHardware) {
@@ -78,6 +79,7 @@ void setup() {
   client.connect(HOST_NAME, HTTP_PORT);
   Serial.println("Siap Digunakan!");
   digitalWrite(ledr,HIGH);
+  digitalWrite(ledy,LOW);
 }
 
 void loop() {
@@ -135,7 +137,7 @@ void loop() {
         getData = client.readString();
         getData.trim();
         //AMBIL DATA JSON
-        const size_t capacity = JSON_OBJECT_SIZE(2) + 70; //cari dulu nilainya pakai Arduino Json 5 Asisten
+        const size_t capacity = JSON_OBJECT_SIZE(2) + 50; //cari dulu nilainya pakai Arduino Json 5 Asisten
         DynamicJsonDocument doc(capacity);
         //StaticJsonDocument<192> doc;
         DeserializationError error = deserializeJson(doc, getData);
