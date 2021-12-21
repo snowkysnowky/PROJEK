@@ -1,0 +1,6 @@
+100nanoF/o.1mikroF 2pcs
+1mikroF/50v 2pcs
+1000mikroF/25v 1pcs
+IC regulator KIA 7809 PI 1pcs
+IC regulator CHM 7805 1pcs
+Dioda 1N5392 2A 4pcs
